@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "491033399322",
+    "firebase_url": "https://tbportal-75e42.firebaseio.com",
+    "project_id": "tbportal-75e42",
+    "storage_bucket": "tbportal-75e42.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:491033399322:android:3307ec2e8e62f4148301a3",
+        "android_client_info": {
+          "package_name": "com.tbportal"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "491033399322-atspri5gtl9la84oa47rpduvl11abrle.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.tbportal",
+            "certificate_hash": "5e8f16062ea3cd2c4a0d547876baa6f38cabf625"
+          }
+        },
+        {
+          "client_id": "491033399322-2mupkcudl0u69tsb9sqlra8996h3ho3k.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBa-HFk7hQQDXrTj265ONGiBhfaarxT6kc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "491033399322-2mupkcudl0u69tsb9sqlra8996h3ho3k.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
