@@ -88,7 +88,8 @@ import bgImageLight from '../../../assets/images/bg-image-light.jpg';
                 position: 'relative',
               }}
               items={[
-                {label: 'Today', value: 'Today', hidden: true},
+                {label: 'Today', value: 'Today'},
+                {label: 'Yesterday', value: 'Yesterday'},
                 {label: 'Tomorrow', value: 'Tomorrow'},
               ]}
               defaultValue={this.state.Etapa}

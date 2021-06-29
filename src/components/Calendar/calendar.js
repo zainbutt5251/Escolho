@@ -41,35 +41,35 @@ function CalendarScreen({navigation, isDark}) {
       {
         date: '2021-06-09',
         key: 'period',
-        color: 'pink',
+        color: 'hotpink',
         startingDay: true,
       },
       {
         date: '2021-06-10',
         key: 'period',
-        color: 'pink',
+        color: 'hotpink',
         // startingDay: true,
       },
       {
         date: '2021-06-11',
         key: 'period',
-        color: 'pink',
+        color: 'hotpink',
       },
       {
         date: '2021-06-12',
         key: 'period',
-        color: 'pink',
+        color: 'hotpink',
       },
       {
         date: '2021-06-13',
         key: 'period',
-        color: 'pink',
+        color: 'hotpink',
         endingDay: true,
       },
       {
         date: '2021-06-22',
         key: 'sports',
-        color: 'pink',
+        color: 'hotpink',
         startingDay: true,
         endingDay: true,
       },
@@ -90,37 +90,37 @@ function CalendarScreen({navigation, isDark}) {
         taskDate: '2021-06-09',
         taskName: 'period',
         icon: 'book',
-        color: 'pink',
+        color: 'hotpink',
       },
       {
         taskDate: '2021-06-11',
         taskName: 'period',
         icon: 'book',
-        color: 'pink',
+        color: 'hotpink',
       },
       {
         taskDate: '2021-06-12',
         taskName: 'period',
         icon: 'book',
-        color: 'pink',
+        color: 'hotpink',
       },
       {
         taskDate: '2021-06-13',
         taskName: 'period',
         icon: 'book',
-        color: 'pink',
+        color: 'hotpink',
       },
       {
         taskDate: '2021-06-22',
         taskName: 'sports',
         icon: 'dribbble',
-        color: 'pink',
+        color: 'hotpink',
       },
       {
         taskDate: '2021-06-22',
         taskName: 'period',
         icon: 'book',
-        color: 'pink',
+        color: 'hotpink',
        
       },
       {
@@ -178,7 +178,7 @@ function CalendarScreen({navigation, isDark}) {
           style={styles.radiusLeft}
           start={{x: 0, y: 0}}
           end={{x: 1, y: 0}}
-          colors={[task.color, 'pink']}>
+          colors={[task.color, 'hotpink']}>
           <View style={styles.TaskIconCalendar}>
             <Entypo name={task.icon} size={30} color={'white'} />
           </View>
@@ -187,7 +187,7 @@ function CalendarScreen({navigation, isDark}) {
           style={styles.radiusRight}
           start={{x: 0, y: 0}}
           end={{x: 1, y: 0}}
-          colors={[task.color, 'pink']}>
+          colors={[task.color, 'hotpink']}>
           <View style={styles.textCenter}>
             <Text style={styles.terefadiv}> {task.taskName} </Text>
             <Text style={styles.terefadiv}> Due to: {task.taskDate} </Text>

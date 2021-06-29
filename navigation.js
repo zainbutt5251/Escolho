@@ -1,15 +1,15 @@
 import 'react-native-gesture-handler';
-import React, {useState, useEffect} from 'react';
+import React, { useState, useEffect } from 'react';
 import {
   View,
   Text,
   StyleSheet,
   Image,
 } from 'react-native';
-import {NavigationContainer} from '@react-navigation/native';
-import {createStackNavigator} from '@react-navigation/stack';
+import { NavigationContainer } from '@react-navigation/native';
+import { createStackNavigator } from '@react-navigation/stack';
 import Login from './src/components/Authentication/login';
-import {firebase, Auth} from './App';
+import { firebase, Auth } from './App';
 import Students from './src/components/students-lists/studentLists';
 import MenuIcon from 'react-native-vector-icons/Feather';
 import SunIcon from 'react-native-vector-icons/FontAwesome';
@@ -39,19 +39,19 @@ import sender from './assets/images/sender.jpg';
 import CreateGroup from './src/components/Chat/CreateGroup';
 import Tabs from './src/components/Tabs';
 // import CalendarScreen from './src/components/Calendar/Calendar';
-import {darkTheme, lightTheme} from './src/_actions/theme';
+import { darkTheme, lightTheme } from './src/_actions/theme';
 import {
   Menu,
   MenuOptions,
   MenuOption,
   MenuTrigger,
 } from 'react-native-popup-menu';
-import {connect} from 'react-redux';
-import {viewModal} from './src/_actions/modalActions';
+import { connect } from 'react-redux';
+import { viewModal } from './src/_actions/modalActions';
 import Homework from './src/components/Assignment/Homework';
 import Teacher from './src/components/Teachers/Teacher';
 import Form from './src/components/Form/Form';
-import {setUser} from './src/_actions/authActions';
+import { setUser } from './src/_actions/authActions';
 // import GiftedChat from './src/components/Chat/FinalChat'
 import GiftedChat from './src/components/Chat/chatRoom';
 import StudentProfile from './src/components/Profiles/StudentProfile';
@@ -64,7 +64,7 @@ import GroupInfo from './src/components/Chat/GroupInfo';
 
 const Stack = createStackNavigator();
 
-function App({viewModal, darkTheme, lightTheme, isDark, setUser, roomName}) {
+function App({ viewModal, darkTheme, lightTheme, isDark, setUser, roomName }) {
   useEffect(() => {
     Auth().onAuthStateChanged(function (user) {
       if (user) {
@@ -82,15 +82,15 @@ function App({viewModal, darkTheme, lightTheme, isDark, setUser, roomName}) {
   const [user, setstate] = useState(null);
   const [dummy, setDummy] = useState([{}]);
 
-  const New = ({navigation}) => {
+  const New = ({ navigation }) => {
 
-    const goToProfile = ()=>{
+    const goToProfile = () => {
       navigation.navigate('StudentProfile')
     }
-    const goToPedagogico = ()=>{
+    const goToPedagogico = () => {
       navigation.navigate('PedagogicoProfile')
     }
-    const goToFinanciero = ()=>{
+    const goToFinanciero = () => {
       navigation.navigate('FinanceiroProfile')
     }
 
@@ -103,7 +103,7 @@ function App({viewModal, darkTheme, lightTheme, isDark, setUser, roomName}) {
             justifyContent: 'space-between',
             // backgroundColor: 'red',
           }}>
-          <View style={{paddingLeft: 70}}>
+          <View style={{ paddingLeft: 70 }}>
             <Text
               style={{
                 alignContent: 'center',
@@ -131,7 +131,7 @@ function App({viewModal, darkTheme, lightTheme, isDark, setUser, roomName}) {
             alignItems: 'center',
             justifyContent: 'space-between',
           }}>
-          <View style={{paddingLeft: 70}}>
+          <View style={{ paddingLeft: 70 }}>
             <Text
               style={{
                 alignContent: 'center',
@@ -194,7 +194,7 @@ function App({viewModal, darkTheme, lightTheme, isDark, setUser, roomName}) {
                 </View>
               }
             />
-             <MenuOption
+            <MenuOption
               onSelect={(e) => goToPedagogico(e)}
               text={
                 <View style={isDark ? styles.menuViewDark : styles.menuView}>
@@ -208,7 +208,7 @@ function App({viewModal, darkTheme, lightTheme, isDark, setUser, roomName}) {
                 </View>
               }
             />
-             <MenuOption
+            <MenuOption
               onSelect={(e) => goToFinanciero(e)}
               text={
                 <View style={isDark ? styles.menuViewDark : styles.menuView}>
@@ -272,7 +272,7 @@ function App({viewModal, darkTheme, lightTheme, isDark, setUser, roomName}) {
       title: '            ESCOLHA O ALUNO',
       headerTintColor: isDark ? 'white' : '',
       headerTransparent: true,
-      headerTitleStyle: {alignSelf: 'center'},
+      headerTitleStyle: { alignSelf: 'center' },
       headerStyle: isDark ? styles.headerTitleDark : styles.headerTitle,
     };
     const profes = {
@@ -354,7 +354,7 @@ function App({viewModal, darkTheme, lightTheme, isDark, setUser, roomName}) {
       title: 'Professor',
       headerTintColor: isDark ? 'white' : '',
       headerTransparent: true,
-      headerTitleStyle: {alignSelf: 'center'},
+      headerTitleStyle: { alignSelf: 'center' },
       headerStyle: isDark ? styles.headerTitleDark : styles.headerTitle,
     };
     const MoreOptions = {
@@ -366,7 +366,7 @@ function App({viewModal, darkTheme, lightTheme, isDark, setUser, roomName}) {
                 <MenuIcon
                   name={'more-vertical'}
                   style={isDark ? styles.optionsDark : styles.options}
-                  // style={styles.options}
+                // style={styles.options}
                 />
               </View>
             }
@@ -388,7 +388,7 @@ function App({viewModal, darkTheme, lightTheme, isDark, setUser, roomName}) {
               }
             />
 
-<MenuOption
+            <MenuOption
               onSelect={(e) => goToProfile(e)}
               text={
                 <View style={isDark ? styles.menuViewDark : styles.menuView}>
@@ -402,7 +402,7 @@ function App({viewModal, darkTheme, lightTheme, isDark, setUser, roomName}) {
                 </View>
               }
             />
-              <MenuOption
+            <MenuOption
               onSelect={(e) => goToPedagogico(e)}
               text={
                 <View style={isDark ? styles.menuViewDark : styles.menuView}>
@@ -416,7 +416,7 @@ function App({viewModal, darkTheme, lightTheme, isDark, setUser, roomName}) {
                 </View>
               }
             />
-             <MenuOption
+            <MenuOption
               onSelect={(e) => goToFinanciero(e)}
               text={
                 <View style={isDark ? styles.menuViewDark : styles.menuView}>
@@ -473,6 +473,181 @@ function App({viewModal, darkTheme, lightTheme, isDark, setUser, roomName}) {
                     </Text>
                   </View>
                 }></MenuOption>
+                
+            ) : (
+              <MenuOption
+                onSelect={(e) => darkTheme(e)}
+                text={
+                  <View style={isDark ? styles.menuViewDark : styles.menuView}>
+                    <MoonIcon
+                      name={'moon'}
+                      style={isDark ? styles.menuIconDark : styles.menuIcon}
+                    />
+                    <Text
+                      style={isDark ? styles.menuTextDark : styles.menuText}>
+                      Dark
+                    </Text>
+                   
+                  </View>
+                }>
+                  
+                </MenuOption>
+
+                
+                
+            )}
+            {isDark ? (
+              <MenuOption
+              onSelect={(e) => showStudents(e)}
+                text={
+                  <View style={isDark ? styles.menuViewDark : styles.menuView}>
+                    <SunIcon
+                      name={'Home'}
+                      style={isDark ? styles.menuIconDark : styles.menuIcon}
+                    />
+                    <Text
+                      style={isDark ? styles.menuTextDark : styles.menuText}>
+                      Home
+                    </Text>
+                  </View>
+                }></MenuOption>
+                
+            ) : (
+              <MenuOption
+              onSelect={(e) => showStudents(e)}
+                text={
+                  <View style={isDark ? styles.menuViewDark : styles.menuView}>
+                    <MoonIcon
+                      name={'home'}
+                      style={isDark ? styles.menuIconDark : styles.menuIcon}
+                    />
+                    <Text
+                      style={isDark ? styles.menuTextDark : styles.menuText}>
+                      Home
+                    </Text>
+                   
+                  </View>
+                }>
+                  
+                </MenuOption>
+
+                
+                
+            )}
+          </MenuOptions>
+        </Menu>
+      ),
+      title: 'ANO LETIEVO 2021',
+      headerTintColor: isDark ? 'white' : '',
+      headerTransparent: true,
+      headerTitleStyle: { alignSelf: 'center' },
+      headerStyle: isDark ? styles.headerTitleDark : styles.headerTitle,
+    };
+    const ChatInboxStyle = {
+      headerTintColor: 'white',
+      title: '',
+      // headerTransparent: true,
+      headerStyle: isDark ? styles.ChatInboxHeaderDark : styles.ChatInboxHeader,
+    };
+    const NoOption = {
+      headerRight: () => (
+        <Menu>
+          <MenuTrigger
+            text={
+              <View style={styles.optionsView}>
+                <MenuIcon
+                  name={'more-vertical'}
+                  style={isDark ? styles.optionsDark : styles.options}
+                />
+              </View>
+            }
+          />
+          <MenuOptions
+            style={isDark ? styles.mainmenuViewDark : styles.mainmenuView}>
+            <MenuOption
+              onSelect={(e) => viewModal(e)}
+              text={
+                <View style={isDark ? styles.menuViewDark : styles.menuView}>
+                  <RefreshIcon
+                    name={'refresh'}
+                    style={isDark ? styles.menuIconDark : styles.menuIcon}
+                  />
+                  <Text style={isDark ? styles.menuTextDark : styles.menuText}>
+                    Trocar Senha
+                  </Text>
+                </View>
+              }
+            />
+            <MenuOption
+              onSelect={(e) => goToProfile(e)}
+              text={
+                <View style={isDark ? styles.menuViewDark : styles.menuView}>
+                  <AntDesign
+                    name={'profile'}
+                    style={isDark ? styles.menuIconDark : styles.menuIcon}
+                  />
+                  <Text style={isDark ? styles.menuTextDark : styles.menuText}>
+                    Perfil do Aluno
+                  </Text>
+                </View>
+              }
+            />
+            <MenuOption
+              onSelect={(e) => goToPedagogico(e)}
+              text={
+                <View style={isDark ? styles.menuViewDark : styles.menuView}>
+                  <AntDesign
+                    name={'profile'}
+                    style={isDark ? styles.menuIconDark : styles.menuIcon}
+                  />
+                  <Text style={isDark ? styles.menuTextDark : styles.menuText}>
+                    Perfil Pedago...
+                  </Text>
+                </View>
+              }
+            />
+            <MenuOption
+              onSelect={(e) => goToFinanciero(e)}
+              text={
+                <View style={isDark ? styles.menuViewDark : styles.menuView}>
+                  <AntDesign
+                    name={'profile'}
+                    style={isDark ? styles.menuIconDark : styles.menuIcon}
+                  />
+                  <Text style={isDark ? styles.menuTextDark : styles.menuText}>
+                    Perfil Financi...
+                  </Text>
+                </View>
+              }
+            />
+            <MenuOption
+              onSelect={() => out()}
+              text={
+                <View style={isDark ? styles.menuViewDark : styles.menuView}>
+                  <LogoutIcon
+                    name={'logout'}
+                    style={isDark ? styles.menuIconDark : styles.menuIcon}
+                  />
+                  <Text style={isDark ? styles.menuTextDark : styles.menuText}>
+                    Sair
+                  </Text>
+                </View>
+              }></MenuOption>
+            {isDark ? (
+              <MenuOption
+                onSelect={(e) => lightTheme(e)}
+                text={
+                  <View style={isDark ? styles.menuViewDark : styles.menuView}>
+                    <SunIcon
+                      name={'sun-o'}
+                      style={isDark ? styles.menuIconDark : styles.menuIcon}
+                    />
+                    <Text
+                      style={isDark ? styles.menuTextDark : styles.menuText}>
+                      Light
+                    </Text>
+                  </View>
+                }></MenuOption>
             ) : (
               <MenuOption
                 onSelect={(e) => darkTheme(e)}
@@ -489,98 +664,857 @@ function App({viewModal, darkTheme, lightTheme, isDark, setUser, roomName}) {
                   </View>
                 }></MenuOption>
             )}
+             {isDark ? (
+              <MenuOption
+                onSelect={(e) => showStudents(e)}
+                text={
+                  <View style={isDark ? styles.menuViewDark : styles.menuView}>
+                    <SunIcon
+                      name={'home'}
+                      style={isDark ? styles.menuIconDark : styles.menuIcon}
+                    />
+                    <Text
+                      style={isDark ? styles.menuTextDark : styles.menuText}>
+                      Home
+                    </Text>
+                  </View>
+                }></MenuOption>
+            ) : (
+              <MenuOption
+                onSelect={(e) => showStudents(e)}
+                text={
+                  <View style={isDark ? styles.menuViewDark : styles.menuView}>
+                    <MoonIcon
+                      name={'home'}
+                      style={isDark ? styles.menuIconDark : styles.menuIcon}
+                    />
+                    <Text
+                      style={isDark ? styles.menuTextDark : styles.menuText}>
+                      Home
+                    </Text>
+                  </View>
+                }></MenuOption>
+            )}
           </MenuOptions>
         </Menu>
       ),
-      title: 'ANO LETIEVO 2021',
       headerTintColor: isDark ? 'white' : '',
-      headerTransparent: true,
-      headerTitleStyle: {alignSelf: 'center'},
-      headerStyle: isDark ? styles.headerTitleDark : styles.headerTitle,
-    };
-    const ChatInboxStyle = {
-      headerTintColor: 'white',
-      title: '',
-      // headerTransparent: true,
-      headerStyle: isDark ? styles.ChatInboxHeaderDark : styles.ChatInboxHeader,
-    };
-    const NoOption = {
-      headerTintColor: isDark ? 'white' : '',
-      title: '',
+      title: '            Comunicados',
       headerTransparent: true,
       headerStyle: isDark ? styles.headerTitleDark : styles.headerTitle,
     };
+  
     const boletim = {
+      headerRight: () => (
+        <Menu>
+          <MenuTrigger
+            text={
+              <View style={styles.optionsView}>
+                <MenuIcon
+                  name={'more-vertical'}
+                  style={isDark ? styles.optionsDark : styles.options}
+                />
+              </View>
+            }
+          />
+          <MenuOptions
+            style={isDark ? styles.mainmenuViewDark : styles.mainmenuView}>
+            <MenuOption
+              onSelect={(e) => viewModal(e)}
+              text={
+                <View style={isDark ? styles.menuViewDark : styles.menuView}>
+                  <RefreshIcon
+                    name={'refresh'}
+                    style={isDark ? styles.menuIconDark : styles.menuIcon}
+                  />
+                  <Text style={isDark ? styles.menuTextDark : styles.menuText}>
+                    Trocar Senha
+                  </Text>
+                </View>
+              }
+            />
+            <MenuOption
+              onSelect={(e) => goToProfile(e)}
+              text={
+                <View style={isDark ? styles.menuViewDark : styles.menuView}>
+                  <AntDesign
+                    name={'profile'}
+                    style={isDark ? styles.menuIconDark : styles.menuIcon}
+                  />
+                  <Text style={isDark ? styles.menuTextDark : styles.menuText}>
+                    Perfil do Aluno
+                  </Text>
+                </View>
+              }
+            />
+            <MenuOption
+              onSelect={(e) => goToPedagogico(e)}
+              text={
+                <View style={isDark ? styles.menuViewDark : styles.menuView}>
+                  <AntDesign
+                    name={'profile'}
+                    style={isDark ? styles.menuIconDark : styles.menuIcon}
+                  />
+                  <Text style={isDark ? styles.menuTextDark : styles.menuText}>
+                    Perfil Pedago...
+                  </Text>
+                </View>
+              }
+            />
+            <MenuOption
+              onSelect={(e) => goToFinanciero(e)}
+              text={
+                <View style={isDark ? styles.menuViewDark : styles.menuView}>
+                  <AntDesign
+                    name={'profile'}
+                    style={isDark ? styles.menuIconDark : styles.menuIcon}
+                  />
+                  <Text style={isDark ? styles.menuTextDark : styles.menuText}>
+                    Perfil Financi...
+                  </Text>
+                </View>
+              }
+            />
+            <MenuOption
+              onSelect={() => out()}
+              text={
+                <View style={isDark ? styles.menuViewDark : styles.menuView}>
+                  <LogoutIcon
+                    name={'logout'}
+                    style={isDark ? styles.menuIconDark : styles.menuIcon}
+                  />
+                  <Text style={isDark ? styles.menuTextDark : styles.menuText}>
+                    Sair
+                  </Text>
+                </View>
+              }></MenuOption>
+            {isDark ? (
+              <MenuOption
+                onSelect={(e) => lightTheme(e)}
+                text={
+                  <View style={isDark ? styles.menuViewDark : styles.menuView}>
+                    <SunIcon
+                      name={'sun-o'}
+                      style={isDark ? styles.menuIconDark : styles.menuIcon}
+                    />
+                    <Text
+                      style={isDark ? styles.menuTextDark : styles.menuText}>
+                      Light
+                    </Text>
+                  </View>
+                }></MenuOption>
+            ) : (
+              <MenuOption
+                onSelect={(e) => darkTheme(e)}
+                text={
+                  <View style={isDark ? styles.menuViewDark : styles.menuView}>
+                    <MoonIcon
+                      name={'moon'}
+                      style={isDark ? styles.menuIconDark : styles.menuIcon}
+                    />
+                    <Text
+                      style={isDark ? styles.menuTextDark : styles.menuText}>
+                      Dark
+                    </Text>
+                  </View>
+                }></MenuOption>
+            )}
+             {isDark ? (
+              <MenuOption
+                onSelect={(e) => showStudents(e)}
+                text={
+                  <View style={isDark ? styles.menuViewDark : styles.menuView}>
+                    <SunIcon
+                      name={'home'}
+                      style={isDark ? styles.menuIconDark : styles.menuIcon}
+                    />
+                    <Text
+                      style={isDark ? styles.menuTextDark : styles.menuText}>
+                      Home
+                    </Text>
+                  </View>
+                }></MenuOption>
+            ) : (
+              <MenuOption
+                onSelect={(e) => showStudents(e)}
+                text={
+                  <View style={isDark ? styles.menuViewDark : styles.menuView}>
+                    <MoonIcon
+                      name={'home'}
+                      style={isDark ? styles.menuIconDark : styles.menuIcon}
+                    />
+                    <Text
+                      style={isDark ? styles.menuTextDark : styles.menuText}>
+                      Home
+                    </Text>
+                  </View>
+                }></MenuOption>
+            )}
+          </MenuOptions>
+        </Menu>
+      ),
       headerTintColor: isDark ? 'white' : '',
-      title: 'BOLETIM          ',
+      title: '          BOLETIM          ',
       headerTransparent: true,
-      headerTitleStyle: {alignSelf: 'center'},
+      headerTitleStyle: { alignSelf: 'center' },
       headerStyle: isDark ? styles.headerTitleDark : styles.headerTitle,
     };
     const professor = {
       headerTintColor: isDark ? 'white' : '',
       title: '',
       headerTransparent: true,
-      headerTitleStyle: {alignSelf: 'center'},
+      headerTitleStyle: { alignSelf: 'center' },
       headerStyle: isDark ? styles.headerTitleDark : styles.headerTitle,
     };
     const SalaDe = {
+      headerRight: () => (
+        <Menu>
+          <MenuTrigger
+            text={
+              <View style={styles.optionsView}>
+                <MenuIcon
+                  name={'more-vertical'}
+                  style={isDark ? styles.optionsDark : styles.options}
+                />
+              </View>
+            }
+          />
+          <MenuOptions
+            style={isDark ? styles.mainmenuViewDark : styles.mainmenuView}>
+            <MenuOption
+              onSelect={(e) => viewModal(e)}
+              text={
+                <View style={isDark ? styles.menuViewDark : styles.menuView}>
+                  <RefreshIcon
+                    name={'refresh'}
+                    style={isDark ? styles.menuIconDark : styles.menuIcon}
+                  />
+                  <Text style={isDark ? styles.menuTextDark : styles.menuText}>
+                    Trocar Senha
+                  </Text>
+                </View>
+              }
+            />
+            <MenuOption
+              onSelect={(e) => goToProfile(e)}
+              text={
+                <View style={isDark ? styles.menuViewDark : styles.menuView}>
+                  <AntDesign
+                    name={'profile'}
+                    style={isDark ? styles.menuIconDark : styles.menuIcon}
+                  />
+                  <Text style={isDark ? styles.menuTextDark : styles.menuText}>
+                    Perfil do Aluno
+                  </Text>
+                </View>
+              }
+            />
+            <MenuOption
+              onSelect={(e) => goToPedagogico(e)}
+              text={
+                <View style={isDark ? styles.menuViewDark : styles.menuView}>
+                  <AntDesign
+                    name={'profile'}
+                    style={isDark ? styles.menuIconDark : styles.menuIcon}
+                  />
+                  <Text style={isDark ? styles.menuTextDark : styles.menuText}>
+                    Perfil Pedago...
+                  </Text>
+                </View>
+              }
+            />
+            <MenuOption
+              onSelect={(e) => goToFinanciero(e)}
+              text={
+                <View style={isDark ? styles.menuViewDark : styles.menuView}>
+                  <AntDesign
+                    name={'profile'}
+                    style={isDark ? styles.menuIconDark : styles.menuIcon}
+                  />
+                  <Text style={isDark ? styles.menuTextDark : styles.menuText}>
+                    Perfil Financi...
+                  </Text>
+                </View>
+              }
+            />
+            <MenuOption
+              onSelect={() => out()}
+              text={
+                <View style={isDark ? styles.menuViewDark : styles.menuView}>
+                  <LogoutIcon
+                    name={'logout'}
+                    style={isDark ? styles.menuIconDark : styles.menuIcon}
+                  />
+                  <Text style={isDark ? styles.menuTextDark : styles.menuText}>
+                    Sair
+                  </Text>
+                </View>
+              }></MenuOption>
+            {isDark ? (
+              <MenuOption
+                onSelect={(e) => lightTheme(e)}
+                text={
+                  <View style={isDark ? styles.menuViewDark : styles.menuView}>
+                    <SunIcon
+                      name={'sun-o'}
+                      style={isDark ? styles.menuIconDark : styles.menuIcon}
+                    />
+                    <Text
+                      style={isDark ? styles.menuTextDark : styles.menuText}>
+                      Light
+                    </Text>
+                  </View>
+                }></MenuOption>
+            ) : (
+              <MenuOption
+                onSelect={(e) => darkTheme(e)}
+                text={
+                  <View style={isDark ? styles.menuViewDark : styles.menuView}>
+                    <MoonIcon
+                      name={'moon'}
+                      style={isDark ? styles.menuIconDark : styles.menuIcon}
+                    />
+                    <Text
+                      style={isDark ? styles.menuTextDark : styles.menuText}>
+                      Dark
+                    </Text>
+                  </View>
+                }></MenuOption>
+            )}
+             {isDark ? (
+              <MenuOption
+                onSelect={(e) => showStudents(e)}
+                text={
+                  <View style={isDark ? styles.menuViewDark : styles.menuView}>
+                    <SunIcon
+                      name={'home'}
+                      style={isDark ? styles.menuIconDark : styles.menuIcon}
+                    />
+                    <Text
+                      style={isDark ? styles.menuTextDark : styles.menuText}>
+                      Home
+                    </Text>
+                  </View>
+                }></MenuOption>
+            ) : (
+              <MenuOption
+                onSelect={(e) => showStudents(e)}
+                text={
+                  <View style={isDark ? styles.menuViewDark : styles.menuView}>
+                    <MoonIcon
+                      name={'home'}
+                      style={isDark ? styles.menuIconDark : styles.menuIcon}
+                    />
+                    <Text
+                      style={isDark ? styles.menuTextDark : styles.menuText}>
+                      Home
+                    </Text>
+                  </View>
+                }></MenuOption>
+            )}
+          </MenuOptions>
+        </Menu>
+      ),
       headerTintColor: isDark ? 'white' : '',
-      title: 'Sala de Aula Virtual         ',
+      title: '      Sala de Aula Virtual         ',
       headerTransparent: true,
-      headerTitleStyle: {alignSelf: 'center'},
+      headerTitleStyle: { alignSelf: 'center' },
       headerStyle: isDark ? styles.headerTitleDark : styles.headerTitle,
     };
     const studentPerformace = {
+      headerRight: () => (
+        <Menu>
+          <MenuTrigger
+            text={
+              <View style={styles.optionsView}>
+                <MenuIcon
+                  name={'more-vertical'}
+                  style={isDark ? styles.optionsDark : styles.options}
+                />
+              </View>
+            }
+          />
+          <MenuOptions
+            style={isDark ? styles.mainmenuViewDark : styles.mainmenuView}>
+            <MenuOption
+              onSelect={(e) => viewModal(e)}
+              text={
+                <View style={isDark ? styles.menuViewDark : styles.menuView}>
+                  <RefreshIcon
+                    name={'refresh'}
+                    style={isDark ? styles.menuIconDark : styles.menuIcon}
+                  />
+                  <Text style={isDark ? styles.menuTextDark : styles.menuText}>
+                    Trocar Senha
+                  </Text>
+                </View>
+              }
+            />
+            <MenuOption
+              onSelect={(e) => goToProfile(e)}
+              text={
+                <View style={isDark ? styles.menuViewDark : styles.menuView}>
+                  <AntDesign
+                    name={'profile'}
+                    style={isDark ? styles.menuIconDark : styles.menuIcon}
+                  />
+                  <Text style={isDark ? styles.menuTextDark : styles.menuText}>
+                    Perfil do Aluno
+                  </Text>
+                </View>
+              }
+            />
+            <MenuOption
+              onSelect={(e) => goToPedagogico(e)}
+              text={
+                <View style={isDark ? styles.menuViewDark : styles.menuView}>
+                  <AntDesign
+                    name={'profile'}
+                    style={isDark ? styles.menuIconDark : styles.menuIcon}
+                  />
+                  <Text style={isDark ? styles.menuTextDark : styles.menuText}>
+                    Perfil Pedago...
+                  </Text>
+                </View>
+              }
+            />
+            <MenuOption
+              onSelect={(e) => goToFinanciero(e)}
+              text={
+                <View style={isDark ? styles.menuViewDark : styles.menuView}>
+                  <AntDesign
+                    name={'profile'}
+                    style={isDark ? styles.menuIconDark : styles.menuIcon}
+                  />
+                  <Text style={isDark ? styles.menuTextDark : styles.menuText}>
+                    Perfil Financi...
+                  </Text>
+                </View>
+              }
+            />
+            <MenuOption
+              onSelect={() => out()}
+              text={
+                <View style={isDark ? styles.menuViewDark : styles.menuView}>
+                  <LogoutIcon
+                    name={'logout'}
+                    style={isDark ? styles.menuIconDark : styles.menuIcon}
+                  />
+                  <Text style={isDark ? styles.menuTextDark : styles.menuText}>
+                    Sair
+                  </Text>
+                </View>
+              }></MenuOption>
+            {isDark ? (
+              <MenuOption
+                onSelect={(e) => lightTheme(e)}
+                text={
+                  <View style={isDark ? styles.menuViewDark : styles.menuView}>
+                    <SunIcon
+                      name={'sun-o'}
+                      style={isDark ? styles.menuIconDark : styles.menuIcon}
+                    />
+                    <Text
+                      style={isDark ? styles.menuTextDark : styles.menuText}>
+                      Light
+                    </Text>
+                  </View>
+                }></MenuOption>
+            ) : (
+              <MenuOption
+                onSelect={(e) => darkTheme(e)}
+                text={
+                  <View style={isDark ? styles.menuViewDark : styles.menuView}>
+                    <MoonIcon
+                      name={'moon'}
+                      style={isDark ? styles.menuIconDark : styles.menuIcon}
+                    />
+                    <Text
+                      style={isDark ? styles.menuTextDark : styles.menuText}>
+                      Dark
+                    </Text>
+                  </View>
+                }></MenuOption>
+            )}
+             {isDark ? (
+              <MenuOption
+                onSelect={(e) => showStudents(e)}
+                text={
+                  <View style={isDark ? styles.menuViewDark : styles.menuView}>
+                    <SunIcon
+                      name={'home'}
+                      style={isDark ? styles.menuIconDark : styles.menuIcon}
+                    />
+                    <Text
+                      style={isDark ? styles.menuTextDark : styles.menuText}>
+                      Home
+                    </Text>
+                  </View>
+                }></MenuOption>
+            ) : (
+              <MenuOption
+                onSelect={(e) => showStudents(e)}
+                text={
+                  <View style={isDark ? styles.menuViewDark : styles.menuView}>
+                    <MoonIcon
+                      name={'home'}
+                      style={isDark ? styles.menuIconDark : styles.menuIcon}
+                    />
+                    <Text
+                      style={isDark ? styles.menuTextDark : styles.menuText}>
+                      Home
+                    </Text>
+                  </View>
+                }></MenuOption>
+            )}
+          </MenuOptions>
+        </Menu>
+      ),
       headerTintColor: isDark ? 'white' : '',
-      title: 'Desempenho do Aluno        ',
+      title: '     Desempenho do Aluno        ',
       headerTransparent: true,
-      headerTitleStyle: {alignSelf: 'center'},
+      headerTitleStyle: { alignSelf: 'center' },
       headerStyle: isDark ? styles.headerTitleDark : styles.headerTitle,
     };
     const MENSALIDADES = {
+      headerRight: () => (
+        <Menu>
+          <MenuTrigger
+            text={
+              <View style={styles.optionsView}>
+                <MenuIcon
+                  name={'more-vertical'}
+                  style={isDark ? styles.optionsDark : styles.options}
+                />
+              </View>
+            }
+          />
+          <MenuOptions
+            style={isDark ? styles.mainmenuViewDark : styles.mainmenuView}>
+            <MenuOption
+              onSelect={(e) => viewModal(e)}
+              text={
+                <View style={isDark ? styles.menuViewDark : styles.menuView}>
+                  <RefreshIcon
+                    name={'refresh'}
+                    style={isDark ? styles.menuIconDark : styles.menuIcon}
+                  />
+                  <Text style={isDark ? styles.menuTextDark : styles.menuText}>
+                    Trocar Senha
+                  </Text>
+                </View>
+              }
+            />
+            <MenuOption
+              onSelect={(e) => goToProfile(e)}
+              text={
+                <View style={isDark ? styles.menuViewDark : styles.menuView}>
+                  <AntDesign
+                    name={'profile'}
+                    style={isDark ? styles.menuIconDark : styles.menuIcon}
+                  />
+                  <Text style={isDark ? styles.menuTextDark : styles.menuText}>
+                    Perfil do Aluno
+                  </Text>
+                </View>
+              }
+            />
+            <MenuOption
+              onSelect={(e) => goToPedagogico(e)}
+              text={
+                <View style={isDark ? styles.menuViewDark : styles.menuView}>
+                  <AntDesign
+                    name={'profile'}
+                    style={isDark ? styles.menuIconDark : styles.menuIcon}
+                  />
+                  <Text style={isDark ? styles.menuTextDark : styles.menuText}>
+                    Perfil Pedago...
+                  </Text>
+                </View>
+              }
+            />
+            <MenuOption
+              onSelect={(e) => goToFinanciero(e)}
+              text={
+                <View style={isDark ? styles.menuViewDark : styles.menuView}>
+                  <AntDesign
+                    name={'profile'}
+                    style={isDark ? styles.menuIconDark : styles.menuIcon}
+                  />
+                  <Text style={isDark ? styles.menuTextDark : styles.menuText}>
+                    Perfil Financi...
+                  </Text>
+                </View>
+              }
+            />
+            <MenuOption
+              onSelect={() => out()}
+              text={
+                <View style={isDark ? styles.menuViewDark : styles.menuView}>
+                  <LogoutIcon
+                    name={'logout'}
+                    style={isDark ? styles.menuIconDark : styles.menuIcon}
+                  />
+                  <Text style={isDark ? styles.menuTextDark : styles.menuText}>
+                    Sair
+                  </Text>
+                </View>
+              }></MenuOption>
+            {isDark ? (
+              <MenuOption
+                onSelect={(e) => lightTheme(e)}
+                text={
+                  <View style={isDark ? styles.menuViewDark : styles.menuView}>
+                    <SunIcon
+                      name={'sun-o'}
+                      style={isDark ? styles.menuIconDark : styles.menuIcon}
+                    />
+                    <Text
+                      style={isDark ? styles.menuTextDark : styles.menuText}>
+                      Light
+                    </Text>
+                  </View>
+                }></MenuOption>
+            ) : (
+              <MenuOption
+                onSelect={(e) => darkTheme(e)}
+                text={
+                  <View style={isDark ? styles.menuViewDark : styles.menuView}>
+                    <MoonIcon
+                      name={'moon'}
+                      style={isDark ? styles.menuIconDark : styles.menuIcon}
+                    />
+                    <Text
+                      style={isDark ? styles.menuTextDark : styles.menuText}>
+                      Dark
+                    </Text>
+                  </View>
+                }></MenuOption>
+            )}
+             {isDark ? (
+              <MenuOption
+                onSelect={(e) => showStudents(e)}
+                text={
+                  <View style={isDark ? styles.menuViewDark : styles.menuView}>
+                    <SunIcon
+                      name={'home'}
+                      style={isDark ? styles.menuIconDark : styles.menuIcon}
+                    />
+                    <Text
+                      style={isDark ? styles.menuTextDark : styles.menuText}>
+                      Home
+                    </Text>
+                  </View>
+                }></MenuOption>
+            ) : (
+              <MenuOption
+                onSelect={(e) => showStudents(e)}
+                text={
+                  <View style={isDark ? styles.menuViewDark : styles.menuView}>
+                    <MoonIcon
+                      name={'home'}
+                      style={isDark ? styles.menuIconDark : styles.menuIcon}
+                    />
+                    <Text
+                      style={isDark ? styles.menuTextDark : styles.menuText}>
+                      Home
+                    </Text>
+                  </View>
+                }></MenuOption>
+            )}
+          </MenuOptions>
+        </Menu>
+      ),
       headerTintColor: isDark ? 'white' : '',
-      title: 'MENSALIDADES       ',
+      title: '         MENSALIDADES       ',
       headerTransparent: true,
-      headerTitleStyle: {alignSelf: 'center'},
+      headerTitleStyle: { alignSelf: 'center' },
       headerStyle: isDark ? styles.headerTitleDark : styles.headerTitle,
     };
     const Profile = {
-      
+
       title: 'PERFIL DO ALUNO          ',
       headerTintColor: isDark ? 'white' : '',
-      headerTitleStyle: {alignSelf: 'center',},
-      headerTransparent: isDark? true: '',
+      headerTitleStyle: { alignSelf: 'center', },
+      headerTransparent: isDark ? true : '',
       headerStyle: isDark ? styles.ProfileHeaderDark : styles.ProfileHeader,
     };
     const FinanceProfile = {
-      
+
       title: 'RESPONSAVEL FINANCEIRO          ',
       headerTintColor: isDark ? 'white' : '',
-      headerTitleStyle: {alignSelf: 'center'},
-      headerTransparent: isDark? true: '',
+      headerTitleStyle: { alignSelf: 'center' },
+      headerTransparent: isDark ? true : '',
       headerStyle: isDark ? styles.FinanceProfileHeaderDark : styles.FinanceProfileHeader,
     };
     const PedagogiProfile = {
-      
+
       title: 'RESPONSAVEL PEDAGOGICO          ',
       headerTintColor: isDark ? 'white' : '',
-      headerTitleStyle: {alignSelf: 'center'},
-      headerTransparent: isDark? true: '',
+      headerTitleStyle: { alignSelf: 'center' },
+      headerTransparent: isDark ? true : '',
       headerStyle: isDark ? styles.PedagogicoProfileHeaderDark : styles.PedagogicoProfileHeader,
     };
     const anoLetievo = {
+      headerRight: () => (
+        <Menu>
+          <MenuTrigger
+            text={
+              <View style={styles.optionsView}>
+                <MenuIcon
+                  name={'more-vertical'}
+                  style={isDark ? styles.optionsDark : styles.options}
+                />
+              </View>
+            }
+          />
+          <MenuOptions
+            style={isDark ? styles.mainmenuViewDark : styles.mainmenuView}>
+            <MenuOption
+              onSelect={(e) => viewModal(e)}
+              text={
+                <View style={isDark ? styles.menuViewDark : styles.menuView}>
+                  <RefreshIcon
+                    name={'refresh'}
+                    style={isDark ? styles.menuIconDark : styles.menuIcon}
+                  />
+                  <Text style={isDark ? styles.menuTextDark : styles.menuText}>
+                    Trocar Senha
+                  </Text>
+                </View>
+              }
+            />
+            <MenuOption
+              onSelect={(e) => goToProfile(e)}
+              text={
+                <View style={isDark ? styles.menuViewDark : styles.menuView}>
+                  <AntDesign
+                    name={'profile'}
+                    style={isDark ? styles.menuIconDark : styles.menuIcon}
+                  />
+                  <Text style={isDark ? styles.menuTextDark : styles.menuText}>
+                    Perfil do Aluno
+                  </Text>
+                </View>
+              }
+            />
+            <MenuOption
+              onSelect={(e) => goToPedagogico(e)}
+              text={
+                <View style={isDark ? styles.menuViewDark : styles.menuView}>
+                  <AntDesign
+                    name={'profile'}
+                    style={isDark ? styles.menuIconDark : styles.menuIcon}
+                  />
+                  <Text style={isDark ? styles.menuTextDark : styles.menuText}>
+                    Perfil Pedago...
+                  </Text>
+                </View>
+              }
+            />
+            <MenuOption
+              onSelect={(e) => goToFinanciero(e)}
+              text={
+                <View style={isDark ? styles.menuViewDark : styles.menuView}>
+                  <AntDesign
+                    name={'profile'}
+                    style={isDark ? styles.menuIconDark : styles.menuIcon}
+                  />
+                  <Text style={isDark ? styles.menuTextDark : styles.menuText}>
+                    Perfil Financi...
+                  </Text>
+                </View>
+              }
+            />
+            <MenuOption
+              onSelect={() => out()}
+              text={
+                <View style={isDark ? styles.menuViewDark : styles.menuView}>
+                  <LogoutIcon
+                    name={'logout'}
+                    style={isDark ? styles.menuIconDark : styles.menuIcon}
+                  />
+                  <Text style={isDark ? styles.menuTextDark : styles.menuText}>
+                    Sair
+                  </Text>
+                </View>
+              }></MenuOption>
+            {isDark ? (
+              <MenuOption
+                onSelect={(e) => lightTheme(e)}
+                text={
+                  <View style={isDark ? styles.menuViewDark : styles.menuView}>
+                    <SunIcon
+                      name={'sun-o'}
+                      style={isDark ? styles.menuIconDark : styles.menuIcon}
+                    />
+                    <Text
+                      style={isDark ? styles.menuTextDark : styles.menuText}>
+                      Light
+                    </Text>
+                  </View>
+                }></MenuOption>
+            ) : (
+              <MenuOption
+                onSelect={(e) => darkTheme(e)}
+                text={
+                  <View style={isDark ? styles.menuViewDark : styles.menuView}>
+                    <MoonIcon
+                      name={'moon'}
+                      style={isDark ? styles.menuIconDark : styles.menuIcon}
+                    />
+                    <Text
+                      style={isDark ? styles.menuTextDark : styles.menuText}>
+                      Dark
+                    </Text>
+                  </View>
+                }></MenuOption>
+            )}
+             {isDark ? (
+              <MenuOption
+                onSelect={(e) => showStudents(e)}
+                text={
+                  <View style={isDark ? styles.menuViewDark : styles.menuView}>
+                    <SunIcon
+                      name={'home'}
+                      style={isDark ? styles.menuIconDark : styles.menuIcon}
+                    />
+                    <Text
+                      style={isDark ? styles.menuTextDark : styles.menuText}>
+                      Home
+                    </Text>
+                  </View>
+                }></MenuOption>
+            ) : (
+              <MenuOption
+                onSelect={(e) => showStudents(e)}
+                text={
+                  <View style={isDark ? styles.menuViewDark : styles.menuView}>
+                    <MoonIcon
+                      name={'home'}
+                      style={isDark ? styles.menuIconDark : styles.menuIcon}
+                    />
+                    <Text
+                      style={isDark ? styles.menuTextDark : styles.menuText}>
+                      Home
+                    </Text>
+                  </View>
+                }></MenuOption>
+            )}
+          </MenuOptions>
+        </Menu>
+      ),
       headerTintColor: isDark ? 'white' : '',
       title: 'ANO LETIEVO 2020       ',
       headerTransparent: true,
-      headerTitleStyle: {alignSelf: 'center'},
+      headerTitleStyle: { alignSelf: 'center' },
       headerStyle: isDark ? styles.headerTitleDark : styles.headerTitle,
     };
     const ChatName = {
       headerTintColor: isDark ? 'white' : '',
       title: 'Francine Riley',
       headerTransparent: true,
-      headerTitleStyle: {alignSelf: 'center'},
+      headerTitleStyle: { alignSelf: 'center' },
       headerStyle: isDark ? styles.headerTitleDark : styles.headerTitle,
     };
     const ScheduleOpt = {
@@ -588,7 +1522,7 @@ function App({viewModal, darkTheme, lightTheme, isDark, setUser, roomName}) {
       title: '01 de Fevereiro 2021',
       headerTransparent: isDark ? true : '',
       backgroundColor: 'white',
-      headerTitleStyle: {alignSelf: 'center', color: 'darkgrey'},
+      headerTitleStyle: { alignSelf: 'center', color: 'darkgrey' },
       headerStyle: isDark ? styles.headerTitleDark : styles.headerTitle,
     };
     const RoomName = {
@@ -615,7 +1549,7 @@ function App({viewModal, darkTheme, lightTheme, isDark, setUser, roomName}) {
                     style={isDark ? styles.menuIconDark : styles.menuIcon}
                   /> */}
                   <Text style={isDark ? styles.menuTextDark : styles.menuText}>
-                   Edit Group
+                    Edit Group
                   </Text>
                 </View>
               }
@@ -629,11 +1563,11 @@ function App({viewModal, darkTheme, lightTheme, isDark, setUser, roomName}) {
                     style={isDark ? styles.menuIconDark : styles.menuIcon}
                   /> */}
                   <Text style={isDark ? styles.menuTextDark : styles.menuText}>
-                   Group Info
+                    Group Info
                   </Text>
                 </View>
               }></MenuOption>
-         
+
           </MenuOptions>
         </Menu>
       ),
@@ -650,17 +1584,17 @@ function App({viewModal, darkTheme, lightTheme, isDark, setUser, roomName}) {
           <View>
             <Image
               source={sender}
-              style={{width: 40, height: 40, borderRadius: 60}}
+              style={{ width: 40, height: 40, borderRadius: 60 }}
             />
           </View>
-          <View style={{paddingLeft: 10}}>
-            <Text style={{fontSize: 20, fontWeight: 'bold', color:'white'}}>{roomName}</Text>
+          <View style={{ paddingLeft: 10 }}>
+            <Text style={{ fontSize: 20, fontWeight: 'bold', color: 'white' }}>{roomName}</Text>
           </View>
         </View>
       ),
       headerTintColor: isDark ? 'white' : 'white',
       // headerTransparent: true,
-      backgroundColor: isDark? '#21223E' : 'white',
+      backgroundColor: isDark ? '#21223E' : 'white',
       headerTitleStyle: {},
       headerStyle: isDark ? styles.headerChatDark : styles.headerChat,
     };
@@ -674,7 +1608,7 @@ function App({viewModal, darkTheme, lightTheme, isDark, setUser, roomName}) {
             justifyContent: 'space-between',
             // backgroundColor: 'red',
           }}>
-          <View style={{paddingLeft: 70}}>
+          <View style={{ paddingLeft: 70 }}>
             <Text
               style={{
                 alignContent: 'center',
@@ -716,54 +1650,26 @@ function App({viewModal, darkTheme, lightTheme, isDark, setUser, roomName}) {
     return (
       <Stack.Navigator initialRouteName="Login" >
         <Stack.Screen name="Login" component={Students} options={Less} />
-        <Stack.Screen name="Tabs" component={Tabs} options={{headerShown: false}} />
+        
+      
+        <Stack.Screen name="Tabs" component={Tabs}  options={{ headerShown: false }} />
         <Stack.Screen name="Teacher" component={Teacher} options={professor} />
         <Stack.Screen name="Chat" component={Chat} options={RoomName} />
         {/* <Stack.Screen name="Chat" component={GiftedChat} options={NoOption} /> */}
         <Stack.Screen name="Form" component={Form} options={Less} />
         <Stack.Screen name="CreateGroup" component={CreateGroup} options={GroupOption} />
-        <Stack.Screen name="StudentProfile" component={StudentProfile}  options={Profile} />
-        <Stack.Screen name="FinanceiroProfile" component={FinanceiroProfile}  options={FinanceProfile} />
-        <Stack.Screen name="PedagogicoProfile" component={PedagogicoProfile}  options={PedagogiProfile} />
+        <Stack.Screen name="StudentProfile" component={StudentProfile} options={Profile} />
+        <Stack.Screen name="FinanceiroProfile" component={FinanceiroProfile} options={FinanceProfile} />
+        <Stack.Screen name="PedagogicoProfile" component={PedagogicoProfile} options={PedagogiProfile} />
 
-        <Stack.Screen
-          name="Schedule"
-          component={Schedule}
-          options={ScheduleOpt}
-        />
+        <Stack.Screen name="Schedule" component={Schedule} options={ScheduleOpt} />
         <Stack.Screen name="CalendarScreen" component={CalendarScreen} />
-
-        <Stack.Screen
-          name="ChatInbox"
-          component={ChatInbox}
-          options={ChatInboxStyle}
-        />
-        <Stack.Screen
-          name="Comunicados"
-          component={Comunicados}
-          options={NoOption}
-        />
-
-        <Stack.Screen
-          name="Dashboard"
-          component={Dashboard}
-          options={MoreOptions}
-        />
-        <Stack.Screen
-          name="FeeRecord"
-          component={FeeRecord}
-          options={MENSALIDADES}
-        />
-        <Stack.Screen
-          name="Performance"
-          component={Performance}
-          options={studentPerformace}
-        />
-        <Stack.Screen
-          name="TimeTable"
-          component={TimeTable}
-          options={boletim}
-        />
+        <Stack.Screen name="ChatInbox" component={ChatInbox} options={ChatInboxStyle} />
+        <Stack.Screen name="Comunicados" component={Comunicados} options={NoOption} />
+        <Stack.Screen name="Dashboard" component={Dashboard} options={MoreOptions} />
+        <Stack.Screen name="FeeRecord" component={FeeRecord} options={MENSALIDADES} />
+        <Stack.Screen name="Performance" component={Performance} options={studentPerformace} />
+        <Stack.Screen name="TimeTable"   component={TimeTable}   options={boletim}   />
         <Stack.Screen
           name="FirstSession"
           component={FirstSession}
@@ -789,7 +1695,7 @@ function App({viewModal, darkTheme, lightTheme, isDark, setUser, roomName}) {
         <Stack.Screen name="Homework" component={Homework} options={NoOption} />
         <Stack.Screen name="Game" component={Game} options={NoOption} />
         <Stack.Screen name="Lecture" component={Lecture} options={NoOption} />
-        <Stack.Screen name="EditGroup" component={EditGroup} options={GroupEditOption}/>
+        <Stack.Screen name="EditGroup" component={EditGroup} options={GroupEditOption} />
         <Stack.Screen name="GroupInfo" component={GroupInfo} options={GroupInfoOption} />
         {/* <Stack.Screen name="StudentReport" component={StudentReport} options={PedagogiProfile}    /> */}
       </Stack.Navigator>
@@ -797,7 +1703,7 @@ function App({viewModal, darkTheme, lightTheme, isDark, setUser, roomName}) {
   };
 
   return (
-    <NavigationContainer style={{height: 1}}>
+    <NavigationContainer style={{ height: 1 }}>
       {user ? (
         <Stack.Navigator headerMode="none" initialRouteName="Login">
           <Stack.Screen name="Students" component={New} />
@@ -909,7 +1815,7 @@ const styles = StyleSheet.create({
     shadowOpacity: 0,
     elevation: 0,
     backgroundColor: '#21223E',
-    opacity:0.9,
+    opacity: 0.9,
   },
   headerGroup: {
     // height: 50,
@@ -930,8 +1836,8 @@ const styles = StyleSheet.create({
     borderBottomWidth: 1,
     borderColor: 'lightgrey',
   },
-  mainmenuViewDark: {padding: 10, backgroundColor: '#21223E'},
-  mainmenuView: {padding: 10, backgroundColor: 'white', },
+  mainmenuViewDark: { padding: 10, backgroundColor: '#21223E' },
+  mainmenuView: { padding: 10, backgroundColor: 'white', },
   menuView: {
     flexDirection: 'row',
     alignItems: 'center',
@@ -968,7 +1874,7 @@ const styles = StyleSheet.create({
   options: {
     fontSize: 30,
     marginLeft: '-20%',
-    
+
   },
   optionsDark: {
     color: 'white',
@@ -978,8 +1884,8 @@ const styles = StyleSheet.create({
   optionsChat: {
     fontSize: 30,
     marginLeft: '-20%',
-    color:'white'
-  
+    color: 'white'
+
   },
   optionsChatDark: {
     color: 'white',
