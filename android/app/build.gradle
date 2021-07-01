@@ -122,11 +122,16 @@ def jscFlavor = 'org.webkit:android-jsc:+'
 def enableHermes = project.ext.react.get("enableHermes", false);
 
 android {
+
+ 
     compileSdkVersion rootProject.ext.compileSdkVersion
 
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
+    }
+    dexOptions {
+        javaMaxHeapSize "4g"
     }
 
     defaultConfig {
@@ -135,7 +140,30 @@ android {
         targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode 1
         versionName "1.0"
-         multiDexEnabled true
+            minSdkVersion 21
+            targetSdkVersion 26         
+            multiDexEnabled true
+    }
+     packagingOptions {
+       pickFirst '**/libjsc.so'
+   }
+    //   signingConfigs {
+    //     release {
+    //         if (project.hasProperty('MYAPP_UPLOAD_STORE_FILE')) {
+    //             storeFile file(MYAPP_UPLOAD_STORE_FILE)
+    //             storePassword MYAPP_UPLOAD_STORE_PASSWORD
+    //             keyAlias MYAPP_UPLOAD_KEY_ALIAS
+    //             keyPassword MYAPP_UPLOAD_KEY_PASSWORD
+    //         }
+    //     }
+    // } 
+     signingConfigs {
+        release {
+            storeFile file('my-upload-key.keystore')
+            storePassword '123456'
+            keyAlias 'my-key-alias'
+            keyPassword '123456'
+        }
     }
     splits {
         abi {
@@ -145,25 +173,19 @@ android {
             include "armeabi-v7a", "x86", "arm64-v8a", "x86_64"
         }
     }
-    signingConfigs {
-        debug {
-            storeFile file('debug.keystore')
-            storePassword 'android'
-            keyAlias 'androiddebugkey'
-            keyPassword 'android'
-        }
-    }
+   
     buildTypes {
         debug {
             signingConfig signingConfigs.debug
         }
-        release {
+       release {
             minifyEnabled true
             // Caution! In production, you need to generate your own keystore file.
             // see https://reactnative.dev/docs/signed-apk-android.
-            signingConfig signingConfigs.debug
+            // signingConfig signingConfigs.debug
             minifyEnabled enableProguardInReleaseBuilds
             proguardFiles getDefaultProguardFile("proguard-android.txt"), "proguard-rules.pro"
+            signingConfig signingConfigs.release
         }
     }
 
@@ -186,9 +208,10 @@ android {
 dependencies {
     implementation fileTree(dir: "libs", include: ["*.jar"])
     //noinspection GradleDynamicVersion
+    implementation 'androidx.multidex:multidex:2.0.1'
     implementation "com.facebook.react:react-native:+"  // From node_modules
     implementation project(':react-native-webview')
-
+implementation 'com.android.support:design:27.1.0'
     implementation "androidx.swiperefreshlayout:swiperefreshlayout:1.0.0"
 
     debugImplementation("com.facebook.flipper:flipper:${FLIPPER_VERSION}") {

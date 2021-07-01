@@ -19,6 +19,28 @@ import Entypo from 'react-native-vector-icons/Entypo';
 const ProfileInfo = ({navigation, isDark}) => {
   console.log('************** StudentList');
   console.log(isDark);
+  const data={
+    Nome:"Valentino C",
+    CPF:"",
+  Gênero:"Masculino",
+  Data_de_Nascimento:"03/06/1968",
+  E_mail:"teste99@thunderbees.com",
+  CEP:"30810-420",
+  U_F:"MG",
+  Cidade:"Belo Horizonte",
+  Tipo:"RUA",
+  Logradouro:"A+",
+  Número:"508",
+  Bairro:"Jardim Alvorada",
+  Complemento:"01 June 2018",
+  
+  Telefone_Residencial:"(31)3714-5292",
+  Telefone_Comercial:"(31)3714-5292",
+  Telefone_Celular:"(31) 99259-3018"
+  }
+
+
+
   return (
     <ImageBackground
       source={isDark ? bgImage : bgImageLight}
@@ -57,7 +79,7 @@ const ProfileInfo = ({navigation, isDark}) => {
             </View>
 
             <View style={{paddingLeft:20, paddingRight:20}}>
-                <View style={styles.dataRows} ><Text  style={isDark ? styles.leftTextStyleDark: styles.leftTextStyle}>Nome:</Text><Text style={isDark ? styles.RightTextStyleDark : styles.RightTextStyle}>Valentino C</Text></View>
+                <View style={styles.dataRows} ><Text  style={isDark ? styles.leftTextStyleDark: styles.leftTextStyle}>Nome:</Text><Text style={isDark ? styles.RightTextStyleDark : styles.RightTextStyle}>{data.Nome}</Text></View>
                 <View style={styles.dataRows} ><Text  style={isDark ? styles.leftTextStyleDark: styles.leftTextStyle}>CPF:</Text><Text style={isDark ? styles.RightTextStyleDark : styles.RightTextStyle}></Text></View>
                 <View style={styles.dataRows} ><Text  style={isDark ? styles.leftTextStyleDark: styles.leftTextStyle}>Gênero:</Text><Text style={isDark ? styles.RightTextStyleDark : styles.RightTextStyle}>Masculino</Text></View>
                 <View style={styles.dataRows} ><Text  style={isDark ? styles.leftTextStyleDark: styles.leftTextStyle}>Data de Nascimento:</Text><Text style={isDark ? styles.RightTextStyleDark : styles.RightTextStyle}>03/06/1968</Text></View>
